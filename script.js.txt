@@ -1,0 +1,154 @@
+// Initialize Lucide icons
+lucide.createIcons();
+
+// Navbar toggle
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+let isNavOpen = false;
+
+hamburger.addEventListener('click', () => {
+  isNavOpen = !isNavOpen;
+  mobileNav.classList.toggle('active');
+  hamburger.innerHTML = isNavOpen
+    ? '<i data-lucide="x" class="w-6 h-6"></i>'
+    : '<i data-lucide="menu" class="w-6 h-6"></i>';
+  lucide.createIcons();
+});
+
+// Nav icon functionality
+document.getElementById('minimize')?.addEventListener('click', () => {
+  console.log('Minimize clicked');
+});
+
+document.getElementById('maximize')?.addEventListener('click', () => {
+  console.log('Maximize clicked');
+});
+
+document.getElementById('close')?.addEventListener('click', () => {
+  document.querySelector('.navbar')?.style.setProperty('display', 'none');
+});
+
+// Slideshow functionality
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+let slideInterval = setInterval(showNextSlide, 3000);
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+  });
+}
+
+function showNextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}
+
+function showPrevSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(currentSlide);
+}
+
+// Fruit grid interaction
+const fruits = [
+  { name: "Apple", price: "₹100/kg", img: "https://www.organiccottonmart.com/cdn/shop/articles/how-to-store-apples_1100x.jpg?v=1734031652" },
+  { name: "Mango", price: "₹120/kg", img: "https://static.toiimg.com/thumb/msid-110013129,width-1280,height-720,resizemode-4/110013129.jpg" },
+  { name: "Orange", price: "₹100/kg", img: "https://gourmetgarden.in/cdn/shop/products/Mini_Oranges_d0ab3d57-f89a-462b-8861-f006e7d9c3c4.jpg?v=1744383474" },
+  { name: "Banana", price: "₹70/kg", img: "https://www.jiomart.com/images/product/original/590000454/banana-robusta-1-kg-product-images-o590000454-p590000454-0-202410011654.jpg?im=Resize=(420,420)" },
+  { name: "Pomegranate", price: "₹140/kg", img: "https://healthyfamilyproject.com/wp-content/uploads/2020/05/Pomegranate-background.jpg" },
+  { name: "Grapes", price: "₹100/kg", img: "https://gourmetgarden.in/cdn/shop/products/Seedless-black-grapes_7a6546bf-7f71-4f29-a9ec-dc3951628d65.jpg?v=1744383211" },
+  { name: "Papaya", price: "₹90/kg", img: "https://royalsplant.com/wp-content/uploads/2024/06/Red-Lady-Papaya.jpg" },
+  { name: "Kiwi", price: "₹700/kg", img: "https://www.sakraworldhospital.com/assets/spl_splimgs/benefits-kiwi-of-fruit.webp" },
+];
+
+const grid = document.getElementById("fruitGrid");
+const tableBody = document.getElementById("fruitTableBody");
+const fruitBoxes = [];
+
+fruits.forEach((fruit, index) => {
+  const row = document.createElement("tr");
+  row.innerHTML = `<td>${fruit.name}</td><td>${fruit.price}</td>`;
+  tableBody.appendChild(row);
+
+  const box = document.createElement("div");
+  box.classList.add("fruit-box");
+  box.setAttribute('tabindex', '0');
+  box.innerHTML = `<img src="${fruit.img}" alt="${fruit.name}" loading="lazy">`;
+  grid.appendChild(box);
+  fruitBoxes.push(box);
+
+  box.addEventListener("mouseenter", () => {
+    fruitBoxes.forEach(el => el.classList.remove("hovered"));
+    document.querySelectorAll("#fruitTable tbody tr").forEach(r => r.classList.remove("hovered-row"));
+    box.classList.add("hovered");
+    row.classList.add("hovered-row");
+
+    const rect = box.getBoundingClientRect();
+    const parentRect = grid.getBoundingClientRect();
+    if (rect.left - parentRect.left < 50) {
+      grid.scrollLeft -= 100;
+    } else if (parentRect.right - rect.right < 50) {
+      grid.scrollLeft += 100;
+    }
+  });
+
+  box.addEventListener("mouseleave", () => {
+    box.classList.remove("hovered");
+    row.classList.remove("hovered-row");
+  });
+
+  box.addEventListener("keydown", e => {
+    if (e.key === 'Enter') {
+      box.dispatchEvent(new Event('mouseenter'));
+    }
+  });
+
+  row.addEventListener("mouseenter", () => {
+    fruitBoxes.forEach(el => el.classList.remove("hovered"));
+    document.querySelectorAll("#fruitTable tbody tr").forEach(r => r.classList.remove("hovered-row"));
+    row.classList.add("hovered-row");
+    box.classList.add("hovered");
+
+    const boxCenter = box.offsetLeft + box.offsetWidth / 2;
+    const scrollCenter = grid.scrollLeft + grid.offsetWidth / 2;
+    grid.scrollLeft += boxCenter - scrollCenter;
+  });
+
+  row.addEventListener("mouseleave", () => {
+    box.classList.remove("hovered");
+    row.classList.remove("hovered-row");
+  });
+});
+
+// Contact form submission
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxkXkXlcoyFKq_FhYDnnYIRRXMMo2N56sJOKATjxcJA0KLNosvgR67PcaiRejym1UiByA/exec'; // Replace with your real URL
+const form = document.forms['submit-to-google-sheet'];
+const formMessage = document.getElementById('formMessage');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const email = form.querySelector('input[name="Email"]').value;
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    formMessage.textContent = 'Please enter a valid email.';
+    formMessage.className = 'form-message error';
+    return;
+  }
+
+  formMessage.textContent = 'Submitting...';
+  formMessage.className = 'form-message';
+
+  fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+    .then(response => {
+      if (!response.ok) throw new Error('Network error');
+      formMessage.textContent = 'Message sent successfully!';
+      formMessage.className = 'form-message success';
+      form.reset();
+      setTimeout(() => { formMessage.textContent = ''; }, 5000);
+    })
+    .catch(error => {
+      console.error('Form submission error:', error);
+      formMessage.textContent = 'Error sending message. Please try again.';
+      formMessage.className = 'form-message error';
+    });
+});

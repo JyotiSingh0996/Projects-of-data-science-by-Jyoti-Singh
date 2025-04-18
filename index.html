@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fruit Market & News: Explore fruit prices, news, and contact us.">
+  <title>Fruit Market & News</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="logo">Fruit Market</div>
+    <div class="nav-links">
+      <a href="#home" aria-label="Home page">Home</a>
+      <a href="#fruits" aria-label="Fruits section">Fruits</a>
+      <a href="#news" aria-label="News section">News</a>
+      <a href="#contact" aria-label="Contact section">Contact</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </div>
+    <div class="nav-icons">
+      <img src="https://icons.veryicon.com/png/o/miscellaneous/skent-icon/minimize-8.png" alt="Minimize window" id="minimize" loading="lazy">
+      <img src="https://cdn-icons-png.flaticon.com/512/3943/3943398.png" alt="Maximize window" id="maximize" loading="lazy">
+      <img src="https://img.icons8.com/ios_filled/512/delete-sign--v2.png" alt="Close window" id="close" loading="lazy">
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#home">Home</a>
+    <a href="#fruits">Fruits</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <div class="content">
+    <div class="rectangle" id="home">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRowLiGQtmXfgzLOMmFh5eFhbw2EXK7dpEJ4Q&s" alt="Additional image" loading="lazy">
+    </div>
+
+    <div class="slideshow-container">
+      <button class="nav-button prev" aria-label="Previous Slide" onclick="showPrevSlide()">❮</button>
+      <button class="nav-button next" aria-label="Next Slide" onclick="showNextSlide()">❯</button>
+      <img class="slide active" src="https://e0.pxfuel.com/wallpapers/710/623/desktop-wallpaper-background-for-nature-big-size-high-resolution-big-beautiful-nature.jpg" alt="Nature Background" loading="lazy">
+      <img class="slide" src="https://static.investindia.gov.in/s3fs-public/2020-04/shutterstock_1116673256%20%281%29.jpg" alt="Invest India" loading="lazy">
+      <img class="slide" src="https://media.istockphoto.com/id/529664572/photo/fruit-background.jpg?s=612x612&w=0&k=20&c=K7V0rVCGj8tvluXDqxJgu0AdMKF8axP0A15P-8Ksh3I=" alt="Fruit Background" loading="lazy">
+      <img class="slide" src="https://stopfoodwaste.ie/wp-content/uploads/2023/08/Banners-For-SFW-Website.png" alt="Food Waste Banner" loading="lazy">
+    </div>
+
+    <div class="fruit-section" id="fruits">
+      <div class="table-container">
+        <table id="fruitTable">
+          <thead>
+            <tr><th>Item</th><th>Price</th></tr>
+          </thead>
+          <tbody id="fruitTableBody"></tbody>
+        </table>
+      </div>
+      <div class="scroll-box" id="fruitGrid"></div>
+    </div>
+
+    <div class="square-box" id="news">
+      <h2>Article News</h2>
+      <div class="scroll-content">
+        <div class="article">
+          <img src="https://th-i.thgim.com/public/incoming/tqcs41/article69463787.ece/alternates/LANDSCAPE_1200/20250412252L.jpg" alt="Landscape" loading="lazy">
+          <a href="https://www.thehindu.com/news/national/india-rejects-comments-by-bangladeshi-officials-on-violence-in-west-bengal/article69463759.ece" target="_blank">
+            ‘Barely disguised and disingenuous attempt'
+          </a>
+          <p>Chief Advisor Prof Mohammed Yunus called upon India to protect rights of minority Muslim population and refuted allegations of involvement of citizens of Bangladesh in the anti-Waqf Act violence in West Bengal’s Murshidabad.</p>
+        </div>
+        <div class="article">
+          <img src="https://th-i.thgim.com/public/incoming/75dx1o/article69446040.ece/alternates/LANDSCAPE_1200/iStock-2193442482.jpg" alt="Supreme Court" loading="lazy">
+          <a href="https://www.thehindu.com/news/national/why-do-we-have-governors-in-every-state-explained/article69445628.ece" target="_blank">
+            Why do we have Governors in every State? | Explained
+          </a>
+          <p>The Supreme Court on April 8, 2025 delivered a significant verdict delineating the powers of the President and the Governors, on the issue of grant of assent to Bills passed by State legislatures, under Articles 201 and 200 respectively of the Constitution.</p>
+        </div>
+        <div class="article">
+          <img src="https://th-i.thgim.com/public/incoming/yw4lqr/article69464044.ece/alternates/LANDSCAPE_1200/vjkvg-congress%203.JPG" alt="Waqf Act" loading="lazy">
+          <a href="https://www.thehindu.com/news/national/andhra-pradesh/people-of-all-faiths-rejecting-communal-politics-of-bjp-says-cwc-member-gidugu-rudra-raju/article69463836.ece" target="_blank">
+            People of all faiths rejecting communal politics of BJP, says CWC member Gidugu Rudra Raju
+          </a>
+          <p>Congress Working Committee member and former PCC president Gidugu Rudra Raju on Friday (April 18, 2025) said that the common people would not accept communal politics and it was evident with the wide-spread support from the Hindus also for the Muslims’ massive agitation organised on amendments to Waqf Act on April 16 across</p>
+        </div>
+        <div class="article">
+          <img src="https://th-i.thgim.com/public/incoming/46f0so/article69464032.ece/alternates/LANDSCAPE_1200/2782_12_4_2025_15_8_19_3_MENTAL_HEALTH_CONSTRUCTION_NEUROSCIENCES_2.JPG" alt="Economy Growth" loading="lazy">
+          <a href="https://www.thehindu.com/news/cities/chennai/construction-of-tnimhans-nears-completion/article69461175.ece" target="_blank">
+            Construction of TNIMHANS nears completion
+          </a>
+          <p>Construction of a comprehensive centre for mental health and neurosciences on the Institute of Mental Health (IMH) campus is nearing completion. Along with the existing psychiatric services, the centre will feature clinics for geriatric psychiatry, dementia, movement disorders, seizures, and memory.</p>
+        </div>
+        <div class="article">
+          <img src="https://th-i.thgim.com/public/incoming/hwn5ec/article69459658.ece/alternates/LANDSCAPE_1200/IMG_FILE_PHOTO__The_Fitc_2_1_TVDT3PEP.jpg" alt="India GDP" loading="lazy">
+          <a href="https://www.thehindu.com/business/Economy/fitch-cuts-india-growth-estimates-by-10-bps-to-64-amid-escalations-in-global-trade-war/article69459620.ece" target="_blank">
+            Fitch cuts India growth estimates by 10 bps to 6.4% amid escalations in global trade war
+          </a>
+          <p>Fitch Ratings on Thursday (April 17, 2025) cut India’s GDP growth estimate by 10 basis points to 6.4% for the current fiscal, but retained the projections for the next financial year, on concerns over a ‘severe’ escalation in global trade war.</p>
+        </div>
+        <div class="article">
+          <img src="https://th-i.thgim.com/public/business/markets/84meo0/article53336505.ece/alternates/LANDSCAPE_1200/thvli-INR-indian-RUPEE" alt="Tariff" loading="lazy">
+          <a href="https://www.thehindu.com/business/markets/rupee-sheds-us-tariff-impact-ends-27-paise-higher-at-8537-against-us-dollar/article69460441.ece" target="_blank">
+            Rupee sheds U.S. tariff impact; ends 27 paise higher at 85.37 against U.S. dollar
+          </a>
+          <p>The rupee strengthened for the fourth consecutive session and closed 27 paise higher at 85.37 (provisional) against the U.S. dollar on Thursday (April 17, 2025), hitting the April 3 closing level, on the back of foreign fund inflows in domestic equities and broad weakness in the greenback.</p>
+        </div>
+        <div class="article">
+          <img src="https://th-i.thgim.com/public/news/3a5kh5/article53329539.ece/alternates/LANDSCAPE_1200/vbk-drugs-tablets-pills" alt="Medicine Sector" loading="lazy">
+          <a href="https://www.thehindu.com/sci-tech/health/govt-bans-manufacture-sale-of-35-fixed-dose-combination-drugs/article69456363.ece?cx_testId=78&cx_testVariant=cx_1&cx_artPos=0&cx_experienceId=EXKWL3XAQS9E&cx_experienceActionId=showRecommendationsOB64H54QYBJE104#cxrecs_s" target="_blank">
+            Govt bans manufacture, sale of 35 fixed-dose combination drugs
+          </a>
+          <p>Apex drugs regulatory body Central Drugs Standard Control Organisation (CDSCO) has directed drug controllers of all States and Union Territories to stop manufacture, sale and distribution of unapproved 35 fixed-dose combination drugs that include painkillers, nutrition supplements and anti-diabetics.</p>
+        </div>
+        <div class="article">
+          <img src="https://th-i.thgim.com/public/incoming/73umm8/article69439197.ece/alternates/LANDSCAPE_1200/2025-01-16T083930Z_1056458014_RC272Z98PX5L_RTRMADP_3_INDIA-MUTUAL-FUNDS-SMALL-INVESTORS.JPG" alt="Stock Market" loading="lazy">
+          <a href="https://economictimes.indiatimes.com/markets/stocks/news/sensex-hits-85000-mark-nifty-at-record-high/articleshow/113556321.cms" target="_blank">
+            Sensex Hits 85,000 Mark, Nifty at Record High
+          </a>
+          <p>India’s stock market reaches new heights as Sensex crosses 85,000, driven by strong investor confidence.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-section" id="contact">
+      <h2>Contact Us</h2>
+      <div class="contact-right">
+        <form name="submit-to-google-sheet" id="contactform">
+          <input type="text" name="Name" placeholder="Your Name" required>
+          <input type="email" name="Email" placeholder="Your Email" required>
+          <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+          <button type="submit" class="btn btn2">Submit</button>
+        </form>
+        <div class="form-message" id="formMessage"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js.txt"></script>
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxkXkXlcoyFKq_FhYDnnYIRRXMMo2N56sJOKATjxcJA0KLNosvgR67PcaiRejym1UiByA/exec'
+    const form = document.forms['submit-to-google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+</html>
